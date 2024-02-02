@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { NsWidgetResolver, WidgetBaseComponent } from '@sunbird-cb/resolver'
-import { ConfigurationsService } from '@sunbird-cb/utils'
+import { ConfigurationsService, MultilingualTranslationsService } from '@sunbird-cb/utils'
 import { NSSearch } from '@sunbird-cb/collection'
 import { SearchApiService } from '../_services/search-api.service'
 
@@ -37,6 +37,7 @@ export class CardLearnComponent extends WidgetBaseComponent
     private router: Router,
     private activateroute: ActivatedRoute,
     private searchApiService: SearchApiService,
+    private langtranslations: MultilingualTranslationsService
     // private activitiesSvc: ActivitiesService,
     // private snackBar: MatSnackBar,
   ) {
@@ -141,6 +142,10 @@ export class CardLearnComponent extends WidgetBaseComponent
 
   allActivities() {
     this.router.navigate(['app', 'activities'])
+  }
+
+  translateLabels(label: string, type: any) {
+    return this.langtranslations.translateLabel(label, type, '')
   }
 
 }

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ConfigurationsService } from '@sunbird-cb/utils';
+import { Component, Input, OnInit } from '@angular/core'
+import { ConfigurationsService, MultilingualTranslationsService } from '@sunbird-cb/utils'
 import { Router } from '@angular/router'
-import { DiscussUtilsService } from '@ws/app/src/lib/routes/discuss/services/discuss-utils.service';
+import { DiscussUtilsService } from '@ws/app/src/lib/routes/discuss/services/discuss-utils.service'
 import _ from 'lodash'
 @Component({
   selector: 'ws-footer-section',
@@ -12,7 +12,11 @@ export class FooterSectionComponent implements OnInit {
   @Input() environment:any;
   @Input() hubsList:any;
   @Input() headerFooterConfigData:any;
-  constructor(private configSvc: ConfigurationsService,private discussUtilitySvc: DiscussUtilsService, private router: Router) { }
+  constructor(private configSvc: ConfigurationsService,
+    private discussUtilitySvc: DiscussUtilsService,
+    private router: Router,
+    private langtranslations: MultilingualTranslationsService) {}
+
   footerSectionConfig = [
     {
       "id":1,
@@ -123,4 +127,7 @@ export class FooterSectionComponent implements OnInit {
     event.target.parentElement.classList.toggle('open');
   }
 
+  translateLabels(label: string, type: any) {
+    return this.langtranslations.translateLabelWithoutspace(label, type, '')
+  }
 }

@@ -61,6 +61,7 @@ import {
   PipeFilterV3Module,
   PipeRelativeTimeModule,
   PipePublicURLModule,
+  MultilingualTranslationsService,
 } from '@sunbird-cb/utils'
 import {
   BtnCallModule,
@@ -125,6 +126,7 @@ import { MicroSurveyModule } from '@sunbird-cb/micro-surveys'
 import { CardContentV2Module } from '@sunbird-cb/collection/src/lib/card-content-v2/card-content-v2.module'
 import { KarmaPointsPanelComponent } from './components/karmapoints-panel/karmapoints-panel.component'
 import { SkeletonLoaderModule } from '@sunbird-cb/collection/src/lib/_common/skeleton-loader/skeleton-loader.module'
+import { SharedModule } from 'src/app/shared/shared.module'
 
 @NgModule({
   declarations: [
@@ -236,6 +238,7 @@ import { SkeletonLoaderModule } from '@sunbird-cb/collection/src/lib/_common/ske
     AttendanceCardModule,
     MicroSurveyModule,
     NgCircleProgressModule.forRoot({}),
+    SharedModule,
   ],
   providers: [
     AppTocResolverService,
@@ -250,6 +253,7 @@ import { SkeletonLoaderModule } from '@sunbird-cb/collection/src/lib/_common/ske
     AccessControlService,
     ProfileResolverService,
     ActionService,
+    MultilingualTranslationsService,
   ],
   exports: [AppTocDiscussionComponent, AppTocSinglePageComponent, AppTocBannerComponent],
   entryComponents: [

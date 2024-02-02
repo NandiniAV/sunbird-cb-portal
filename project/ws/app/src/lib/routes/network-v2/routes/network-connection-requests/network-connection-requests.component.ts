@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { NetworkV2Service } from '../../services/network-v2.service'
 import { WsEvents, EventService } from '@sunbird-cb/utils/src/public-api'
+import { TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'ws-app-network-connection-requests',
@@ -23,6 +24,7 @@ export class NetworkConnectionRequestsComponent implements OnInit {
     private route: ActivatedRoute,
     private networkV2Service: NetworkV2Service,
     private eventSvc: EventService,
+    private translate: TranslateService,
   ) {
     if (this.route.snapshot.data.connectionRequests
       && this.route.snapshot.data.connectionRequests.data
@@ -43,6 +45,11 @@ export class NetworkConnectionRequestsComponent implements OnInit {
     if (this.datalist && this.datalist.length > 0) {
       this.filter('timestamp', 'desc')
     }
+  }
+
+  translateHub(hubName: string): string {
+    const translationKey =  hubName
+    return this.translate.instant(translationKey)
   }
 
   updateQuery(key: string) {

@@ -7,11 +7,15 @@ import {
 import { BrowserModule } from '@angular/platform-browser'
 import { ProfileCertificateDialogModule } from '../profile-certificate-dialog/profile-certificate-dialog.module'
 import { PipePublicURLModule, DefaultThumbnailModule, PipeCertificateImageURLModule } from '@sunbird-cb/utils/src/public-api'
+import { TranslateModule } from '@ngx-translate/core'
+
 @NgModule({
   declarations: [ProfileCretificationsV2Component],
   imports: [BrowserModule, MatButtonModule, MatCardModule, MatChipsModule, DefaultThumbnailModule,
     // tslint:disable-next-line:max-line-length
-    MatDividerModule, MatExpansionModule, MatIconModule, MatProgressSpinnerModule, ProfileCertificateDialogModule, PipePublicURLModule, PipeCertificateImageURLModule],
+    MatDividerModule, MatExpansionModule, MatIconModule, MatProgressSpinnerModule, ProfileCertificateDialogModule, PipePublicURLModule, PipeCertificateImageURLModule,
+    TranslateModule,
+  ],
   entryComponents: [ProfileCretificationsV2Component],
 })
 export class ProfileCretificationsV2Module {

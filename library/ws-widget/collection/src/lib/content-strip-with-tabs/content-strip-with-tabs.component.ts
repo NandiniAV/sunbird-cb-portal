@@ -11,6 +11,7 @@ import {
   ConfigurationsService,
   UtilityService,
   WsEvents,
+  MultilingualTranslationsService,
 } from '@sunbird-cb/utils'
 import { Subscription } from 'rxjs'
 import { filter } from 'rxjs/operators'
@@ -95,6 +96,7 @@ export class ContentStripWithTabsComponent extends WidgetBaseComponent
     // private http: HttpClient,
     // private searchServSvc: SearchServService,
     private userSvc: WidgetUserService,
+    private langtranslations: MultilingualTranslationsService
   ) {
     super()
   }
@@ -1150,6 +1152,10 @@ export class ContentStripWithTabsComponent extends WidgetBaseComponent
       }
     }
     return returnValue
+  }
+
+  translateLabels(label: string, type: any) {
+    return this.langtranslations.translateLabel(label, type, '')
   }
 
 }

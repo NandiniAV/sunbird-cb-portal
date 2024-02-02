@@ -4,6 +4,7 @@ import { ValueService } from '@sunbird-cb/utils'
 import { KnowledgeResourceService } from '../../services/knowledge-resource.service'
 import { NSKnowledgeResource } from '../../models/knowledge-resource.models'
 import { ActivatedRoute } from '@angular/router'
+import { TranslateService } from '@ngx-translate/core'
 // tslint:disable
 import _ from 'lodash'
 // tslint:enable
@@ -31,10 +32,15 @@ export class KnowledgeAllComponent implements OnInit, OnDestroy {
   constructor(
     private valueSvc: ValueService,
     private kwResources: KnowledgeResourceService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private translate: TranslateService,
     ) {
-
       this.allResources = _.get(this.activateRoute.snapshot, 'data.allResources.data.responseData') || []
+      if (localStorage.getItem('websiteLanguage')) {
+        this.translate.setDefaultLang('en')
+        const lang = localStorage.getItem('websiteLanguage')!
+        this.translate.use(lang)
+      }
      }
 
   ngOnInit() {
@@ -42,6 +48,8 @@ export class KnowledgeAllComponent implements OnInit, OnDestroy {
       this.sideNavBarOpened = !isLtMedium
       this.screenSizeIsLtMedium = isLtMedium
     })
+    // tslint:disable-next-line
+    console.log("translate ", this.translate)
   }
 
   ngOnDestroy() {
